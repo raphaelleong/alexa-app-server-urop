@@ -5,7 +5,7 @@ const format = require('string-template');
 const defaultLang = 'en-gb';
 const translations = {};
 
-fs.readdirSync('translations').forEach((file) => {
+fs.readdirSync('apps/alexa-monzo/translations').forEach((file) => {
   const lang = file.replace('.js', '').toLowerCase();
   translations[lang] = require(`./${path.join('translations', file)}`);
 });
