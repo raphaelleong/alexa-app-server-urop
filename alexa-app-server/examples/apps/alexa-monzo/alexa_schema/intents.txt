@@ -1,0 +1,41 @@
+{
+  "intents": [
+    {
+      "intent": "GetSpendingHistory",
+      "slots": [
+        {
+          "name": "TransactionCategory",
+          "type": "TRANSACTION_CATEGORIES"
+        },
+        {
+          "name": "duration",
+          "type": "AMAZON.DURATION"
+        }
+      ]
+    },
+    {
+      "intent": "GetBalance"
+    },
+    {
+      "intent": "GetSpendingToday"
+    },
+    {
+      "intent": "GetTargets"
+    },
+    {
+      "intent": "GetUserNumber"
+    },
+    {
+      "intent": "FreezeCard"
+    },
+    {
+      "intent": "UnfreezeCard"
+    },
+    {
+      "intent" : "AMAZON.NoIntent"
+    },
+    {
+      "intent" : "AMAZON.CancelIntent"
+    }
+  ]
+}
