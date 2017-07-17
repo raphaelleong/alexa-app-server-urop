@@ -23,6 +23,7 @@
     "alexa-app": "^3.2.0",
     "bluebird": "^3.4.7",
     "body-parser": "~1.16.0",
+    "bugsnag": "^1.11.0",
     "ejs": "~2.5.5",
     "express": "~4.14.1",
     "hotswap": "^1.1.0",
@@ -30,6 +31,7 @@
     "moment": "^2.18.1",
     "pluralize": "^5.0.0",
     "request-promise": "^4.2.1",
+    "xmldoc": "^1.1.0",
     "youtube-search": "^1.0.10"
   },
   "devDependencies": {

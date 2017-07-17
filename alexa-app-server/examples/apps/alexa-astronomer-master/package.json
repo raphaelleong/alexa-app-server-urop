@@ -1,0 +1,24 @@
+{
+  "name": "astronomer",
+  "version": "1.0.0",
+  "description": "Allows Alexa to answer simple astronomical questions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fultonms/alexa-astronomer"
+  },
+  "author": "Michael Fulton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fultonms/alexa-astronomer/issues"
+  },
+  "homepage": "https://github.com/fultonms/alexa-astronomer",
+  "dependencies": {
+    "alexa-app": "^2.3.4",
+    "moment": "^2.15.1",
+    "request": "^2.75.0"
+  }
+}

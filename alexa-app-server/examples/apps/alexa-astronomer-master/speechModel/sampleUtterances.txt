@@ -1,0 +1,29 @@
+GetSunrise when does the sun rise on {Date}
+GetSunrise what time does the sun rise on {Date}
+GetSunrise when is sunrise on {Date}
+GetSunrise when will the sun rise on {Date}
+GetSunrise when will sunset be on {Date}
+GetSunrise what time will the sun set on {Date}
+GetSunrise what time will sunset be on {Date}
+
+GetSunset when does the sun set on {Date}
+GetSunset what time does the sun set on {Date}
+GetSunset when is sunset on {Date}
+GetSunset when will the sun set on {Date}
+GetSunset when will sunset be on {Date}
+GetSunset what time will the sun set on {Date}
+GetSunset what time will sunset be on {Date}
+
+GetMoonPhase what phase is the moon in
+GetMoonPhase what phase is the moon in today
+GetMoonPhase what does the moon look like
+GetMoonPhase what does the moon look like today
+GetMoonPhase what will the moon look like tonight
+GetMoonPhase is it a full moon
+GetMoonPhase is it a new moon
+GetMoonPhase is it a harvest moon
+
+GetGoodGazingNight is it a good night for star gazing
+GetGoodGazingNight can i see the stars tonight
+GetGoodGazingNight can i see the stars
+GetGoodGazingNight when is the next good night for star gazing
