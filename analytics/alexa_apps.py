@@ -2,7 +2,7 @@
 import sys
 sys.path.insert(0, './alexa_analytics.py')
 
-import json, requests, git, subprocess, alexa_analytics
+import json, requests, subprocess, alexa_analytics
 
 num = 100
 term = "alexa-app"
