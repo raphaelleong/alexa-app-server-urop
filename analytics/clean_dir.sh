@@ -1,3 +1,3 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 find demo/ -type d -empty -delete

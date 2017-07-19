@@ -7,6 +7,7 @@ import json, requests, git, subprocess, alexa_analytics
 num = 100
 term = "alexa-app"
 urlSearch = 'https://api.github.com/search/repositories?q=' + term + '+language:js&per_page=' + str(num)
+# can add &sort=updated for more recent results
 urlAlexaAppFormat = 'https://api.github.com/search/repositories?q=require%28%27alexa-app%27%29+in:file+language:js+repo:'
 
 resp = requests.get(url=urlSearch)
