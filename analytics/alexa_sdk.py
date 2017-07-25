@@ -75,12 +75,12 @@ comp = 0
 for name in app_urls:
     comp = comp + 1
 
-    dirname = "demo-app/" + name[19:]
+    dirname = "demo-sdk/" + name[19:]
 
     subprocess.call(['mkdir', '-p', dirname]);
     subprocess.call(['git', 'clone', name, dirname]);
 
-    flag = alexa_analytics.check_alexa_app(dirname)
+    flag = alexa_analytics.check_alexa_sdk(dirname)
     if (flag[1] > 0):
         #print(flag[0])
         count=count+1
