@@ -2,7 +2,7 @@
 
 count=0
 
-for f in demo/*; do
+for f in demo-app/*; do
   for g in $f/*; do
     res=`grep -ro app.intent $g | wc -l`
     echo "$g has $res app.intent sinks"
