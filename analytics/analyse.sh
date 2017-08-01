@@ -4,18 +4,16 @@ count=0
 
 rm -rf test.txt
 
-echo "Repo, URL, size (KB), intent functions"$'\r' >> test.txt
-
+echo "Repo, URL, size (KB), intent functions, slots, data sink module, sinks found"$'\r' >> test.txt
+declare -a moduleCount=(0 0 0)
 
 for f in demo-app/*; do
   for g in $f/*; do
-
     if [ -f $g/index.js ]
     then
-	
-	
+	index=0
+	url="https://github.com/${g:9}"
 	intent=`py -c "import alexa_analytics as a; a.find_intents(\"$g\")"`
-	
 	if [ "$intent" == 0 ]
 	then
 		miss=$(($miss+1))
@@ -23,17 +21,55 @@ for f in demo-app/*; do
 		#intent=`grep -ro --exclude-dir=node_modules .intent $g | wc -l`
 	fi
 	   
-	url="https://github.com/${g:9}"
 	size=`du -shk $g --exclude=$g/.git --exclude=$g/node_modules`
 	sizeRes=($size)
 
-	#slots="grep -zPo "'slots':( |)(\{([^{}]++|(?1))*\})" $g/index.js"
-	#echo $slots
+	slots=`py -c "import alexa_analytics as a; a.find_slots(\"$g\")"`
+	if [ "$slots" == -1 ]
+	then
+		miss=$(($miss+1))
+		continue
+	fi
+	
+
+	declare -a moduleSearch=("request" "request-promise") 
+
+	module="n/a"
+	moduleRes="n/a"
+	for i in "${moduleSearch[@]}"
+	do
+		moduleFile=`py -c "import alexa_analytics as a; a.find_module_file(\"$g\", \"$i\")"`
+		if [ "$moduleFile" != -1 ]
+		then
+			moduleRes="$i"
+			moduleCount[$index]=$((${moduleCount[$index]}+1))
+			break
+		fi
+		index=$(($index+1))
+	done
+
+	if [ "$index" == 0 ]
+	then
+		module=`py -c "import alexa_analytics as a; a.find_req_sinks(\"$g/$moduleFile\")"`
+	fi
+	if [ "$index" == 1 ]
+	then
+		module=`py -c "import alexa_analytics as a; a.find_rp_sinks(\"$g/$moduleFile\")"`
+	fi
+	if [ "$index" == 2 ]
+	then
+		moduleCount[$index]=$((${moduleCount[$index]}+1))
+	fi
+
+
 	echo "${g:9} analytics:"
 	echo "Repo size: ${sizeRes[0]}KB"
-	echo "$intent intent functions"
-
-	echo "${g:9}, $url, ${sizeRes[0]}, $intent"$'\r' >> test.txt
+	echo "No. of intents: $intent"
+	echo "No. of Slots: $slots"
+	echo "Data sink module: $moduleRes"
+	echo "No. of sinks: $module"
+	
+	echo "${g:9}, $url, ${sizeRes[0]}, $intent, $slots, $moduleRes, $module"$'\r' >> test.txt
 	echo "--------------------------------------------------------------"
 	   
 	count=$(($count+1))
@@ -43,6 +79,11 @@ done
 
 echo "$count repos analysed."
 echo "$miss repos could not be analysed."
+
+echo "request: ${moduleCount[0]}"
+echo "request-promise: ${moduleCount[1]}"
+echo "others/local server: ${moduleCount[2]}"
+
 
 #App.intent, const, https://, uri, Request, Request-promise, rp(options)
 
