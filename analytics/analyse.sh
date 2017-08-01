@@ -3,7 +3,6 @@
 count=0
 
 rm -rf test.txt
-
 echo "Repo, URL, size (KB), intent functions, slots, data sink module, sinks found"$'\r' >> test.txt
 declare -a moduleCount=(0 0 0)
 
@@ -73,6 +72,15 @@ for f in demo-app/*; do
 	echo "--------------------------------------------------------------"
 	   
 	count=$(($count+1))
+
+
+	slotGraph="$slotGraph, $slots"
+
+	if [ "$module" != n/a ] 
+	then
+		sinkGraph="$sinkGraph, $module"
+	fi
+	intentGraph="$intentGraph, $intent"
     fi 
   done
 done
@@ -84,6 +92,8 @@ echo "request: ${moduleCount[0]}"
 echo "request-promise: ${moduleCount[1]}"
 echo "others/local server: ${moduleCount[2]}"
 
+graph=`py -c "import plot; plot.draw_hist([${slotGraph:1}],[${sinkGraph:1}],[${intentGraph:1}])"`
+echo "$graph"
 
 #App.intent, const, https://, uri, Request, Request-promise, rp(options)
 
