@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 def draw_hist(slots, sinks, intents):
     f1 = plt.figure(1)
-    plt.hist(slots, bins=4)
+    plt.hist(slots, bins=[0,1,2,3,4,5,6,20])
     plt.title("Histogram to show no. of slots for Alexa Repos (" + str(len(slots)) + ")")
     plt.xlabel("No. of Slots")
     plt.ylabel("Frequency Density")
