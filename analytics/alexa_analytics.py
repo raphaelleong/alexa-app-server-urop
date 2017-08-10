@@ -8,15 +8,15 @@ def check_alexa_app(path):
 
         os.chdir(path)
         for file in glob.glob( "*.js" ):
-                try: 
-                    f = open(file)
-                    contents = f.read()
-                    if term in contents:
+            try: 
+                lines = list(skip_comments(file))
+                for line in lines:
+                    if (term in line.replace(" ","").replace("\"","\'")):
                         os.chdir("../../../")
                         return(path + ": is an alexa-app", 1)
-                except: 
-                    contents = ""
-                    print("Could not print file: " + file + "\n", end=' ', flush=True)
+            except: 
+                contents = ""
+                print("Could not print file: " + file + "\n", end=' ', flush=True)
         os.chdir("../../../")
     return(path + ": is not an alexa-app", 0)
 
@@ -178,6 +178,9 @@ def find_slots(path):
 
     # find all occurrences of Slots : {}
     # retrieve all parts of list in { 1 , 2 , 3}
+
+#def find_utterances(path):
+
 
 def skip_comments(filename):
     blockStart = "/*"

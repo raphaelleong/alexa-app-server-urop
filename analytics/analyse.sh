@@ -3,7 +3,7 @@
 count=0
 
 rm -rf test.txt
-echo "Repo, URL, size (KB), intent functions, slots, data sink module, sinks found"$'\r' >> test.txt
+echo "Repo, URL, size (KB), intent functions, slots, data sink module, sinks found"$'\r' >> analyse_results.txt
 declare -a moduleCount=(0 0 0)
 
 for f in demo-app/*; do
@@ -68,7 +68,7 @@ for f in demo-app/*; do
 	echo "Data sink module: $moduleRes"
 	echo "No. of sinks: $module"
 	
-	echo "${g:9}, $url, ${sizeRes[0]}, $intent, $slots, $moduleRes, $module"$'\r' >> test.txt
+	echo "${g:9}, $url, ${sizeRes[0]}, $intent, $slots, $moduleRes, $module"$'\r' >> analyse_results.txt
 	echo "--------------------------------------------------------------"
 	   
 	count=$(($count+1))
